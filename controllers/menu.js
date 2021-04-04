@@ -11,11 +11,13 @@ module.exports = {
   },
 
   postMenu: async (req, res, next) => {
+    const newMenu = new Menu(req.body);
+
     try {
-      const products = await Product.find();
-      res.status(200).json(products);
+      await newMenu.save();
+      res.status(200).json(newMenu);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json("Could not save menu item");
     }
   }
 };
