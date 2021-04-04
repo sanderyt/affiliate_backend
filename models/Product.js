@@ -5,17 +5,45 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  level: {
+  price: {
     type: Number,
     required: true
   },
-  unlocked: {
-    type: Boolean,
+  url: {
+    type: String,
     required: true
   },
-  progress: {
-    type: Number,
+  images: {
+    type: [String],
     required: true
+  },
+  description: {
+    type: String,
+    required: false
+  },
+  brand: {
+    type: String,
+    required: false
+  },
+  color: {
+    type: String,
+    required: false
+  },
+  deliveryTime: {
+    type: String,
+    required: false
+  },
+  EAN: {
+    type: String,
+    required: false
+  },
+  fromPrice: {
+    type: Number,
+    required: false
+  },
+  discount: {
+    type: Number,
+    required: false
   }
 });
 
