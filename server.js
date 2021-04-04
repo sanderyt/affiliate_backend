@@ -23,6 +23,6 @@ app.use(express.static(__dirname + "/public"));
 const productsRoute = require("./routes/products");
 
 //ROUTE MIDDLEWARES
-app.use("/api/products", authRoute);
+app.use("/api/products", productsRoute);
 
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
