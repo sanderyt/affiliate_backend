@@ -13,6 +13,12 @@ module.exports = {
   postMenu: async (req, res, next) => {
     const newMenu = new Menu(req.body);
 
+    const alreadyExists = await Menu.findOne({ name: newMenu.name });
+
+    if (alreadyExists) {
+      return res.status(400).json("Deze category bestaat al");
+    }
+
     try {
       await newMenu.save();
       res.status(200).json(newMenu);
