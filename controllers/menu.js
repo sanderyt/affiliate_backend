@@ -11,7 +11,7 @@ module.exports = {
   },
 
   postMenu: async (req, res, next) => {
-    const newMenu = new Menu(req.body);
+    const newMenu = new Menu({ ...req.body, depth: 0 });
 
     const alreadyExists = await Menu.findOne({ name: newMenu.name });
 
