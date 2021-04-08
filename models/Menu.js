@@ -10,8 +10,11 @@ const menuSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  subItems: [{ type: Schema.Types.ObjectId, ref: "SubMenu" }],
   depth: {
+    type: Number,
+    required: true
+  },
+  id: {
     type: Number,
     required: true
   }

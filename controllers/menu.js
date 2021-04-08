@@ -27,6 +27,22 @@ module.exports = {
     }
   },
 
+  editMenu: async (req, res, next) => {
+    const { menuItems } = req.body;
+
+    await Menu.deleteMany({});
+
+    try {
+      menuItems.map(async item => {
+        const newItem = new Menu(item);
+        await newItem.save();
+      });
+      res.status(200).json("Saved all the items");
+    } catch (error) {
+      res.status(400).json("Could not save menu item");
+    }
+  },
+
   deleteMenu: async (req, res, next) => {
     const { name } = req.body;
     try {
