@@ -23,7 +23,7 @@ module.exports = {
       await newMenu.save();
       res.status(200).json(newMenu);
     } catch (error) {
-      res.status(400).json("Could not save menu item");
+      res.status(400).json(error);
     }
   },
 
