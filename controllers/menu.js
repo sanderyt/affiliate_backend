@@ -11,12 +11,13 @@ module.exports = {
   },
 
   postMenu: async (req, res, next) => {
-    const newMenu = new Menu({ ...req.body, depth: 0 });
+    const allMenuItems = await Menu.find();
+    const newMenu = new Menu({ ...req.body, id: allMenuItems.length });
 
     const alreadyExists = await Menu.findOne({ name: newMenu.name });
 
     if (alreadyExists) {
-      return res.status(400).json("Deze category bestaat al");
+      return res.status(400).json("Deze categorie bestaat al");
     }
 
     try {
