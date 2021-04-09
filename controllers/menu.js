@@ -34,13 +34,13 @@ module.exports = {
     await Menu.deleteMany({});
 
     try {
-      menuItems.map(async item => {
-        const newItem = new Menu(item);
+      menuItems.map(async (item, index) => {
+        const newItem = new Menu({ ...item, id: index });
         await newItem.save();
       });
       res.status(200).json("Saved all the items");
     } catch (error) {
-      res.status(400).json("Could not save menu item");
+      res.status(400).json(error);
     }
   },
 
@@ -50,7 +50,7 @@ module.exports = {
       await Menu.deleteOne({ name });
       res.status(200).json("Het item is verwijderd");
     } catch (error) {
-      res.status(400).json("Could not delete item.");
+      res.status(400).json(error);
     }
   }
 };
