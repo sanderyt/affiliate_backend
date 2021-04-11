@@ -23,7 +23,6 @@ module.exports = {
       res.status(200).json(savedUser);
     } catch (error) {
       res.status(400).send(error);
-      console.log("test");
     }
   },
 
